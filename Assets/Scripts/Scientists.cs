@@ -36,8 +36,14 @@ public class Scientists : MonoBehaviour
 
         if(m_randomDrop == 1)
         {
+            AudioManager.m_Instance.Play("Trash");
             Instantiate(m_drop, transform.position, Quaternion.identity);
             m_randomDrop = 0;
+        }
+
+        if (m_agent.velocity.magnitude < 0.1f)
+        {
+            AudioManager.m_Instance.Play("FootSteps");
         }
     }
 
