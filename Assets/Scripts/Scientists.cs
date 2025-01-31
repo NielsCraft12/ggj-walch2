@@ -65,4 +65,15 @@ public class Scientists : MonoBehaviour
 
         return m_startPos;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Door"))
+        {
+            if (other.gameObject.GetComponent<DoorOpen>().Moving == false)
+            {
+                other.gameObject.GetComponent<DoorOpen>().Moving = true;
+            }
+        }
+    }
 }
