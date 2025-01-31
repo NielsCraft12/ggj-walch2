@@ -1,3 +1,5 @@
+using System.Collections;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,8 +18,25 @@ public class playerMovement : MonoBehaviour
     [SerializeField]
     GameObject cleaningpoint;
 
+    private float cleaningTimer;
+
+    [SerializeField]
+    private float cleaningTime = 2f;
+
     [SerializeField]
     private float cleaningRadius = 2f; // Radius for the cleaning sphere
+
+    bool isCleaning = false;
+
+    Coroutine coroutine;
+
+    [SerializeField]
+    GameObject particles;
+
+    bool isCleard = false;
+
+    [SerializeField]
+    bool particlesActive = false;
 
     private void Awake()
     {
@@ -31,8 +50,29 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
+        if (particlesActive == true)
+        {
+            if (!isCleard)
+            {
+                particles.GetComponent<ParticleSystem>().Simulate(0, true, true);
+                //  particles.GetComponent<ParticleSystem>().Clear(true);
+
+                isCleard = true;
+            }
+            particles.GetComponent<ParticleSystem>().Play(true);
+        }
+        else
+        {
+            isCleard = false;
+            particles.GetComponent<ParticleSystem>().Stop();
+        }
+        if (cleaningTimer > 0 && isCleaning == true)
+        {
+            particlesActive = true;
+            cleaningTimer -= Time.deltaTime;
+            CheckCleaningArea();
+        }
         LookAt();
-        // CheckCleaningArea();
     }
 
     private void FixedUpdate()
@@ -42,9 +82,9 @@ public class playerMovement : MonoBehaviour
 
         // Apply the calculated movement direction and speed
         rb.linearVelocity = new Vector3(
-            moveDirection.x * maxSpeed,
+            moveDirection.y * maxSpeed,
             yVelocity,
-            moveDirection.y * maxSpeed
+            moveDirection.x * maxSpeed
         );
     }
 
@@ -53,7 +93,27 @@ public class playerMovement : MonoBehaviour
         moveDirection = _context.ReadValue<Vector2>();
     }
 
-    public void Clean(InputAction.CallbackContext _context) { }
+    public void Clean(InputAction.CallbackContext _context)
+    {
+        if (_context.phase == InputActionPhase.Performed)
+        {
+            cleaningTimer = 2f;
+            isCleaning = true;
+            // This runs when key is first pressed
+        }
+        else if (_context.phase == InputActionPhase.Canceled)
+        {
+            isCleaning = false;
+            particlesActive = false;
+            Debug.Log("Clean key released");
+        }
+    }
+
+    IEnumerator timer()
+    {
+        yield return new WaitForSeconds(cleaningTimer);
+        CheckCleaningArea();
+    }
 
     private void LookAt()
     {
@@ -105,8 +165,11 @@ public class playerMovement : MonoBehaviour
         {
             if (hitCollider.CompareTag("Trash"))
             {
-                Debug.Log($"Object in cleaning range: {hitCollider.gameObject.name}");
-                Destroy(hitCollider.gameObject);
+                if (cleaningTimer < 0)
+                {
+                    Debug.Log("Cleaning complete");
+                    Destroy(hitCollider.gameObject);
+                }
             }
         }
     }
