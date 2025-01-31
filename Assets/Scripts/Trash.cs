@@ -13,7 +13,6 @@ public class Trash : MonoBehaviour
         }
 
         int _randomPile = Random.Range(0, 3);
-        Debug.Log(_randomPile);
         m_TrashPiles[_randomPile].SetActive(true);
     }
 }
