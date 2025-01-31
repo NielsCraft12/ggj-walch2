@@ -7,13 +7,13 @@ public class UiManager : MonoBehaviour
     [Header("Time")]
     public const int m_hoursInDay = 24, m_minutesInHour = 60;
     [HideInInspector] public float m_dayDuration;
-
-    float m_totalTime = 0;
+    [HideInInspector] public float m_totalTime = 0;
     float m_currentTime = 0;
 
     [Header("Other")]
     [SerializeField] Slider m_messOmeter;
-    List<GameObject> m_allTrash;
+    public List<GameObject> m_allTrash;
+    [SerializeField] GameObject m_escMenu;
 
     private void Start()
     {
@@ -34,6 +34,8 @@ public class UiManager : MonoBehaviour
         m_allTrash.Clear();
         m_allTrash.AddRange(_trashObjects);
         m_messOmeter.value = m_allTrash.Count;
+
+        m_escMenu.SetActive(SettingsSingleton.Instance.settings.m_IsPaused);
     }
 
     public float GetHour()

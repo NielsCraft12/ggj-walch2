@@ -6,6 +6,7 @@ public class Buttons : MonoBehaviour
     public void PointerEnter()
     {
         transform.localScale = new Vector2(1.05f, 1.05f);
+        AudioManager.m_Instance.Play("ButtonHover");
     }
 
     public void PointerExit()
@@ -15,11 +16,26 @@ public class Buttons : MonoBehaviour
 
     public void StartGame()
     {
+        AudioManager.m_Instance.Play("ButtonClick");
         SceneManager.LoadScene("GameView");
+    }
+
+    public void MainMenu()
+    {
+        AudioManager.m_Instance.Play("ButtonClick");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Resume()
+    {
+        AudioManager.m_Instance.Play("ButtonClick");
+        SettingsSingleton.Instance.settings.m_IsPaused = false;
     }
 
     public void QuitGame()
     {
+        AudioManager.m_Instance.Play("ButtonClick");
+
         #if (UNITY_EDITOR || DEVELOPMENT_BUILD)
             Debug.Log(this.name + " : " + this.GetType() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
         #endif
