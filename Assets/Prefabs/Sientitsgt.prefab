@@ -157,6 +157,7 @@ MonoBehaviour:
   m_maxRadius: 10
   m_waitTime: 2
   m_dropRate: 4
+  m_messOmeterText: {fileID: 0}
   m_drop: {fileID: 6625387700250456209, guid: b7fd3d103e4fcb144b5e32aa5bea5596, type: 3}
 --- !u!195 &2010550013910417889
 NavMeshAgent:

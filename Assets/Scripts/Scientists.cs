@@ -9,6 +9,7 @@ public class Scientists : MonoBehaviour
     [SerializeField] float m_maxRadius;
     [SerializeField] float m_waitTime;
     [Range(2, 10)] [SerializeField] int m_dropRate;
+    [SerializeField] Animator m_messOmeterText;
     [SerializeField] GameObject m_drop;
 
     int m_randomDrop;
@@ -38,6 +39,7 @@ public class Scientists : MonoBehaviour
         {
             AudioManager.m_Instance.Play("Trash");
             Instantiate(m_drop, transform.position, Quaternion.identity);
+            m_messOmeterText.SetTrigger("Shake");
             m_randomDrop = 0;
         }
 
