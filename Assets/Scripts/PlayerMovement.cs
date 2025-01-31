@@ -101,14 +101,14 @@ public class playerMovement : MonoBehaviour
         );
     }
 
-    public void ShootTrap(InputAction.CallbackContext _context)
-    {
-        if (trapcooldownTimer <= 0)
-        {
-            Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
-            trapcooldownTimer = trapcooldown;
-        }
-    }
+    // public void ShootTrap(InputAction.CallbackContext _context)
+    // {
+    //     if (trapcooldownTimer <= 0)
+    //     {
+    //         Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
+    //         trapcooldownTimer = trapcooldown;
+    //     }
+    // }
 
     public void Pause(InputAction.CallbackContext _context)
     {
@@ -185,7 +185,7 @@ public class playerMovement : MonoBehaviour
         );
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Trash"))
+            if (hitCollider.CompareTag("Trash") || hitCollider.CompareTag("Rat"))
             {
                 if (cleaningTimer < 0)
                 {
