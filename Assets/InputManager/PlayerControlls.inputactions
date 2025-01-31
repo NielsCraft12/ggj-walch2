@@ -20,13 +20,22 @@
                     "id": "aad37521-01f0-4133-8a8b-7e70f43789dc",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "SlowTap(duration=1)",
                     "initialStateCheck": false
                 },
                 {
                     "name": "Interact",
                     "type": "Button",
                     "id": "054e80f1-1109-45b6-bf16-810ff740c299",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "9414e397-f6f4-4175-9854-c2c656ecfba2",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -103,7 +112,7 @@
                 {
                     "name": "left",
                     "id": "d2581a9b-1d11-4566-b27d-b92aff5fabbc",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -125,7 +134,7 @@
                 {
                     "name": "right",
                     "id": "fcfe95b8-67b9-4526-84b5-5d0bc98d6400",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -240,6 +249,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe6e9a00-b348-4a8c-811a-3082f6217795",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
