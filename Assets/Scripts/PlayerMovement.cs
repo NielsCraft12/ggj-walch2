@@ -28,8 +28,6 @@ public class playerMovement : MonoBehaviour
 
     bool isCleaning = false;
 
-    Coroutine coroutine;
-
     [SerializeField]
     GameObject particles;
 
@@ -37,6 +35,18 @@ public class playerMovement : MonoBehaviour
 
     [SerializeField]
     bool particlesActive = false;
+
+    [SerializeField]
+    GameObject trap;
+
+    [SerializeField]
+    Transform trapSpawnPoint;
+
+    [SerializeField]
+    float trapcooldown = 1f;
+
+    [SerializeField]
+    float trapcooldownTimer = 0f;
 
     private void Awake()
     {
@@ -50,13 +60,16 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
+        if (trapcooldownTimer > 0)
+        {
+            trapcooldownTimer -= Time.deltaTime;
+        }
+
         if (particlesActive == true)
         {
             if (!isCleard)
             {
                 particles.GetComponent<ParticleSystem>().Simulate(0, true, true);
-                //  particles.GetComponent<ParticleSystem>().Clear(true);
-
                 isCleard = true;
             }
             particles.GetComponent<ParticleSystem>().Play(true);
@@ -88,6 +101,23 @@ public class playerMovement : MonoBehaviour
         );
     }
 
+    public void ShootTrap(InputAction.CallbackContext _context)
+    {
+        if (trapcooldownTimer <= 0)
+        {
+            Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
+            trapcooldownTimer = trapcooldown;
+        }
+    }
+
+    public void Pause(InputAction.CallbackContext _context)
+    {
+        SettingsSingleton.Instance.settings.m_IsPaused = !SettingsSingleton
+            .Instance
+            .settings
+            .m_IsPaused;
+    }
+
     public void OnMove(InputAction.CallbackContext _context)
     {
         moveDirection = _context.ReadValue<Vector2>();
@@ -99,20 +129,12 @@ public class playerMovement : MonoBehaviour
         {
             cleaningTimer = 2f;
             isCleaning = true;
-            // This runs when key is first pressed
         }
         else if (_context.phase == InputActionPhase.Canceled)
         {
             isCleaning = false;
             particlesActive = false;
-            Debug.Log("Clean key released");
         }
-    }
-
-    IEnumerator timer()
-    {
-        yield return new WaitForSeconds(cleaningTimer);
-        CheckCleaningArea();
     }
 
     private void LookAt()
