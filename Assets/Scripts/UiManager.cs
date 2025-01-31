@@ -3,10 +3,15 @@ using UnityEngine;
 public class UiManager : MonoBehaviour
 {
     public const int m_hoursInDay = 24, m_minutesInHour = 60;
-    public float m_dayDuration = 30;
+    public float m_dayDuration;
 
     float m_totalTime = 0;
     float m_currentTime = 0;
+
+    private void Start()
+    {
+        m_dayDuration = SettingsSingleton.Instance.settings.m_GameTime;
+    }
 
     private void Update()
     {
