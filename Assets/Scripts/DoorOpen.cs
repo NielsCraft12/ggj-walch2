@@ -13,6 +13,9 @@ public class DoorOpen : MonoBehaviour
     private Vector3 startPos;
     private float delay = 0.0f;
 
+    [SerializeField]
+    private float openTime = 5.0f;
+
     private void Start()
     {
         startPos = transform.position;
@@ -20,7 +23,6 @@ public class DoorOpen : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("StartPos: " + startPos);
         if (moving)
         {
             if (opening)
@@ -50,9 +52,10 @@ public class DoorOpen : MonoBehaviour
             if (opening)
             {
                 delay += Time.deltaTime;
-                if (delay > 0)
+                if (delay > openTime)
                 {
                     opening = false;
+                    delay = 0.0f;
                 }
             }
             else
