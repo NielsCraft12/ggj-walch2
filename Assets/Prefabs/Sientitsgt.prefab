@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2b6dfe9218b075f4f9c5fce368f92846, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_minRadius: 5
   m_maxRadius: 10
   m_waitTime: 2
+  m_dropRate: 4
   m_drop: {fileID: 6625387700250456209, guid: b7fd3d103e4fcb144b5e32aa5bea5596, type: 3}
 --- !u!195 &2010550013910417889
 NavMeshAgent:

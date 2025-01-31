@@ -8,6 +8,7 @@ public class Scientists : MonoBehaviour
     [SerializeField] float m_minRadius;
     [SerializeField] float m_maxRadius;
     [SerializeField] float m_waitTime;
+    [Range(2, 10)] [SerializeField] int m_dropRate;
     [SerializeField] GameObject m_drop;
 
     int m_randomDrop;
@@ -42,7 +43,7 @@ public class Scientists : MonoBehaviour
 
     private IEnumerator SetNewTarget()
     {
-        m_randomDrop = Random.Range(0, 5);
+        m_randomDrop = Random.Range(0, m_dropRate);
         yield return new WaitForSeconds(m_waitTime);
         m_targetPos = ChooseRandomPos();
         m_agent.SetDestination(m_targetPos);
