@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class Buttons : MonoBehaviour
     public void PointerExit()
     {
         transform.localScale = Vector2.one;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("GameView");
     }
 
     public void QuitGame()
