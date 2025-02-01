@@ -54,6 +54,8 @@ public class playerMovement : MonoBehaviour
     [SerializeField]
     float trapcooldownTimer = 0f; // Current cooldown timer
 
+    GameManager manager;
+
     // Initialize physics properties
     private void Awake()
     {
@@ -63,6 +65,11 @@ public class playerMovement : MonoBehaviour
         rb.mass = 1f; // Set consistent mass
         rb.angularDamping = 0.05f; // Minimal rotation resistance
         rb.useGravity = true; // Ensure gravity is on
+    }
+
+    private void Start()
+    {
+        manager = FindFirstObjectByType<GameManager>();
     }
 
     // Handle timers and visual effects
@@ -124,6 +131,7 @@ public class playerMovement : MonoBehaviour
     {
         if (trapcooldownTimer <= 0)
         {
+            AudioManager.m_Instance.Play("BigPop");
             Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
             trapcooldownTimer = trapcooldown;
         }
@@ -140,11 +148,13 @@ public class playerMovement : MonoBehaviour
     {
         if (_context.phase == InputActionPhase.Performed)
         {
+            AudioManager.m_Instance.Play("Bubble");
             cleaningTimer = 2f;
             isCleaning = true;
         }
         else if (_context.phase == InputActionPhase.Canceled)
         {
+            AudioManager.m_Instance.Stop("Bubble");
             isCleaning = false;
             particlesActive = false;
         }
@@ -206,7 +216,8 @@ public class playerMovement : MonoBehaviour
             {
                 if (cleaningTimer < 0)
                 {
-                    Debug.Log("Cleaning complete");
+                    AudioManager.m_Instance.Play("Slerp");
+                    manager.m_CleanedCount++;
                     Destroy(hitCollider.gameObject);
                     isCleaning = false;
                     particlesActive = false;

@@ -78,7 +78,7 @@ MonoBehaviour:
     m_Source: {fileID: 0}
   - m_Name: BigPop
     m_Clip: {fileID: 8300000, guid: 6a58d150d60adc446bcee3a268b1ff20, type: 3}
-    m_Volume: 1
+    m_Volume: 1.5
     m_VolumeVariance: 0
     m_Pitch: 1
     m_PitchVariance: 0
@@ -154,6 +154,16 @@ MonoBehaviour:
     m_PitchVariance: 0
     m_Loop: 1
     m_Music: 1
+    m_MixerGroup: {fileID: 0}
+    m_Source: {fileID: 0}
+  - m_Name: Slerp
+    m_Clip: {fileID: 8300000, guid: 037483e46efcd184e9bcc734aa516795, type: 3}
+    m_Volume: 1
+    m_VolumeVariance: 0
+    m_Pitch: 1
+    m_PitchVariance: 0
+    m_Loop: 0
+    m_Music: 0
     m_MixerGroup: {fileID: 0}
     m_Source: {fileID: 0}
   m_Settings: {fileID: 11400000, guid: 5a3be52878f922d4083b50fbfe6fb72d, type: 2}
