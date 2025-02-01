@@ -45,7 +45,7 @@ public class Buttons : MonoBehaviour
         #elif (UNITY_STANDALONE)
              Application.Quit();
         #elif (UNITY_WEBGL)
-             Application.OpenURL("itch url");
+             Application.OpenURL("https://joahvds.itch.io/walch-origins");
         #endif
     }
 }

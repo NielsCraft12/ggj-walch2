@@ -42,4 +42,15 @@ public class Pesk : MonoBehaviour
             
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Door"))
+        {
+            if (other.gameObject.GetComponent<DoorOpen>().Moving == false)
+            {
+                other.gameObject.GetComponent<DoorOpen>().Moving = true;
+            }
+        }
+    }
 }
