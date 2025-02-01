@@ -8,7 +8,7 @@ public class UiManager : MonoBehaviour
     public const int m_hoursInDay = 24, m_minutesInHour = 60;
     [HideInInspector] public float m_dayDuration;
     [HideInInspector] public float m_totalTime = 0;
-    float m_currentTime = 0;
+    public float m_currentTime = 0;
 
     [Header("Other")]
     [SerializeField] Slider m_messOmeter;
