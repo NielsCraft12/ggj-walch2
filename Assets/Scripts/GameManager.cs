@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] UiManager m_uiManager;
     [SerializeField] GameObject m_rat;
-    [SerializeField] Transform m_ratSpawn;
+    [SerializeField] List<Transform> m_ratSpawns;
     List<GameObject> m_rats = new List<GameObject>();
     public int m_CleanedCount;
 
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
             while (m_rats.Count < expectedRatCount)
             {
-                GameObject _newRat = Instantiate(m_rat, m_ratSpawn.position, Quaternion.identity);
+                GameObject _newRat = Instantiate(m_rat, m_ratSpawns[Random.Range(0, m_ratSpawns.Count)].position, Quaternion.identity);
                 m_rats.Add(_newRat);
             }
         }
