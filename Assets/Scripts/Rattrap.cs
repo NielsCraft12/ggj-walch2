@@ -40,7 +40,7 @@ public class Rattrap : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if (!other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player") || !other.gameObject.CompareTag("Scientist"))
         {
             Destroy(gameObject);
         }
