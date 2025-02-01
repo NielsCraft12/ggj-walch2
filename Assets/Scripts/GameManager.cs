@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform m_ratSpawn;
     List<GameObject> m_rats = new List<GameObject>();
     public int m_CleanedCount;
-    private const float m_gradeScaling = 150f;
+    private const float m_gradeScaling = 1500f;
 
     private void Start()
     {
@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
     {
         int _totalTrash = m_uiManager.m_allTrash.Count + m_CleanedCount;
         int _cleanedTrash = m_CleanedCount;
+
+        Debug.Log(_totalTrash);
+        Debug.Log(_cleanedTrash);
 
         if (_totalTrash == 0) return "F";
 
