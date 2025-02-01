@@ -23,6 +23,7 @@ public class Buttons : MonoBehaviour
     public void MainMenu()
     {
         AudioManager.m_Instance.Play("ButtonClick");
+        AudioManager.m_Instance.StopAllSounds();
         SceneManager.LoadScene("MainMenu");
     }
 
