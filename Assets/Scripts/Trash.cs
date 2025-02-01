@@ -15,6 +15,6 @@ public class Trash : MonoBehaviour
         int _randomPile = Random.Range(0, 3);
         m_TrashPiles[_randomPile].SetActive(true);
 
-        transform.position = new Vector3(transform.position.x, -1.8f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, -2.6f, transform.position.z);
     }
 }
