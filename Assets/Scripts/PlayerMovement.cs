@@ -3,51 +3,58 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// Handles player movement, cleaning mechanics, and trap placement
 public class playerMovement : MonoBehaviour
 {
+    // Component reference
     private Rigidbody rb;
 
+    [Header("Movement")]
+    // Movement settings
     [SerializeField]
-    private float maxSpeed;
-
-    [SerializeField]
-    private float rotationSpeed = 5f;
-
-    private Vector2 moveDirection;
+    private float maxSpeed; // movement speed
 
     [SerializeField]
-    GameObject cleaningpoint;
+    private float rotationSpeed = 5f; // Speed at which player rotates
+    private Vector2 moveDirection; // Current movement input direction
 
-    private float cleaningTimer;
+    [Header("Cleaning")]
+    // Cleaning mechanic variables
+    [SerializeField]
+    GameObject cleaningpoint; // Point from which cleaning occurs
+    private float cleaningTimer; // Timer for cleaning duration
 
     [SerializeField]
-    private float cleaningTime = 2f;
+    private float cleaningTime = 2f; // How long cleaning takes
 
     [SerializeField]
-    private float cleaningRadius = 2f; // Radius for the cleaning sphere
+    private float cleaningRadius = 2f; // Area of effect for cleaning
+    bool isCleaning = false; // Cleaning state flag
 
-    bool isCleaning = false;
+    [Header("Particles")]
+    // Particle effect handling
+    [SerializeField]
+    GameObject particles; // Particle system for visual effects
+    bool isCleard = false; // Flag to track particle system state
 
     [SerializeField]
-    GameObject particles;
+    bool particlesActive = false; // Toggle for particle effects
 
-    bool isCleard = false;
+    [Header("Traps")]
+    // Trap placement system
+    [SerializeField]
+    GameObject trap; // Trap prefab to spawn
 
     [SerializeField]
-    bool particlesActive = false;
+    Transform trapSpawnPoint; // Where traps spawn from
 
     [SerializeField]
-    GameObject trap;
+    float trapcooldown = 1f; // Time between trap placements
 
     [SerializeField]
-    Transform trapSpawnPoint;
+    float trapcooldownTimer = 0f; // Current cooldown timer
 
-    [SerializeField]
-    float trapcooldown = 1f;
-
-    [SerializeField]
-    float trapcooldownTimer = 0f;
-
+    // Initialize physics properties
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,6 +65,7 @@ public class playerMovement : MonoBehaviour
         rb.useGravity = true; // Ensure gravity is on
     }
 
+    // Handle timers and visual effects
     void Update()
     {
         if (trapcooldownTimer > 0)
@@ -88,6 +96,7 @@ public class playerMovement : MonoBehaviour
         LookAt();
     }
 
+    // Physics-based movement calculations
     private void FixedUpdate()
     {
         // Maintain the vertical velocity to avoid interference with jumping
@@ -101,15 +110,7 @@ public class playerMovement : MonoBehaviour
         );
     }
 
-    // public void ShootTrap(InputAction.CallbackContext _context)
-    // {
-    //     if (trapcooldownTimer <= 0)
-    //     {
-    //         Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
-    //         trapcooldownTimer = trapcooldown;
-    //     }
-    // }
-
+    // Toggle pause state
     public void Pause(InputAction.CallbackContext _context)
     {
         SettingsSingleton.Instance.settings.m_IsPaused = !SettingsSingleton
@@ -118,6 +119,7 @@ public class playerMovement : MonoBehaviour
             .m_IsPaused;
     }
 
+    // Handle trap placement with cooldown
     public void ShootTrap(InputAction.CallbackContext _context)
     {
         if (trapcooldownTimer <= 0)
@@ -127,11 +129,13 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    // Process movement input
     public void OnMove(InputAction.CallbackContext _context)
     {
         moveDirection = _context.ReadValue<Vector2>();
     }
 
+    // Handle cleaning action input
     public void Clean(InputAction.CallbackContext _context)
     {
         if (_context.phase == InputActionPhase.Performed)
@@ -146,6 +150,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    // Rotate player to face movement direction
     private void LookAt()
     {
         Vector3 direction = rb.linearVelocity;
@@ -166,6 +171,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    // Handle door interactions
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Door"))
@@ -177,6 +183,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    // Visualize cleaning radius in editor
     private void OnDrawGizmos()
     {
         if (cleaningpoint != null)
@@ -186,6 +193,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    // Check for and clean objects within radius
     private void CheckCleaningArea()
     {
         Collider[] hitColliders = Physics.OverlapSphere(

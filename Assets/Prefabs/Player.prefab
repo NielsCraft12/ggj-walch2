@@ -5034,7 +5034,7 @@ MonoBehaviour:
   trap: {fileID: 7058175877929820606, guid: d03a95ffb5ec86e43b46c779404fbf6c, type: 3}
   trapSpawnPoint: {fileID: 8127083066382018955}
   trapcooldown: 1
-  trapcooldownTimer: -0.00076294784
+  trapcooldownTimer: 0
 --- !u!114 &156862275015956109
 MonoBehaviour:
   m_ObjectHideFlags: 0
