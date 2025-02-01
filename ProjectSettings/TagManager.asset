@@ -8,11 +8,12 @@ TagManager:
   - Door
   - Trash
   - Rat
+  - Scientist
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Scientists/Rats
   - Water
   - UI
   - 

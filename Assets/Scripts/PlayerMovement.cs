@@ -191,6 +191,8 @@ public class playerMovement : MonoBehaviour
                 {
                     Debug.Log("Cleaning complete");
                     Destroy(hitCollider.gameObject);
+                    isCleaning = false;
+                    particlesActive = false;
                 }
             }
         }
