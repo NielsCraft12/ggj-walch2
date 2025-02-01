@@ -118,6 +118,15 @@ public class playerMovement : MonoBehaviour
             .m_IsPaused;
     }
 
+    public void ShootTrap(InputAction.CallbackContext _context)
+    {
+        if (trapcooldownTimer <= 0)
+        {
+            Instantiate(trap, trapSpawnPoint.position, trapSpawnPoint.rotation);
+            trapcooldownTimer = trapcooldown;
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext _context)
     {
         moveDirection = _context.ReadValue<Vector2>();
