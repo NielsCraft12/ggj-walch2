@@ -7,4 +7,5 @@ public class GameSettings : ScriptableObject
     public bool m_Music;
     public float m_GameTime;
     public bool m_IsPaused;
+    public string m_Grade;
 }

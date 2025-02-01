@@ -136,4 +136,24 @@ MonoBehaviour:
     m_Music: 0
     m_MixerGroup: {fileID: 0}
     m_Source: {fileID: 0}
+  - m_Name: Trash
+    m_Clip: {fileID: 8300000, guid: 2cf74d9b1383097438a55a21806961e2, type: 3}
+    m_Volume: 1
+    m_VolumeVariance: 0
+    m_Pitch: 1
+    m_PitchVariance: 0
+    m_Loop: 0
+    m_Music: 0
+    m_MixerGroup: {fileID: 0}
+    m_Source: {fileID: 0}
+  - m_Name: Music
+    m_Clip: {fileID: 8300000, guid: 9d80a361dbd54e744b926dd7985b2941, type: 3}
+    m_Volume: 1
+    m_VolumeVariance: 0
+    m_Pitch: 1
+    m_PitchVariance: 0
+    m_Loop: 1
+    m_Music: 1
+    m_MixerGroup: {fileID: 0}
+    m_Source: {fileID: 0}
   m_Settings: {fileID: 11400000, guid: 5a3be52878f922d4083b50fbfe6fb72d, type: 2}
