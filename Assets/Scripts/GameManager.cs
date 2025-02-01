@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject m_rat;
     [SerializeField] Transform m_ratSpawn;
     List<GameObject> m_rats = new List<GameObject>();
+    public int m_CleanedCount;
 
     private void Start()
     {
+        m_CleanedCount = 0;
         SettingsSingleton.Instance.settings.m_IsPaused = false;
     }
 
