@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -74,11 +75,15 @@ public class Scientists : MonoBehaviour
         return m_startPos;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Scientist"))
         {
-            ChooseRandomPos();
+            m_setTarget = null;
+            if (m_setTarget == null)
+            {
+                m_setTarget = StartCoroutine(SetNewTarget());
+            }
         }
     }
 
