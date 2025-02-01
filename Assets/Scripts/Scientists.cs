@@ -74,6 +74,14 @@ public class Scientists : MonoBehaviour
         return m_startPos;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Scientist"))
+        {
+            ChooseRandomPos();
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Door"))
