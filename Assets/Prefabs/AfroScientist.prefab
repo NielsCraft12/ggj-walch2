@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7062034673293465744}
   - component: {fileID: 8134849086975540298}
   - component: {fileID: 2010550013910417889}
+  - component: {fileID: 7805546566105405146}
   m_Layer: 0
   m_Name: AfroScientist
   m_TagString: Scientist
@@ -127,6 +128,28 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &7805546566105405146
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325928161373784442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf134eff146e3f048a33d3a0e8d5b529, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8699663352592287035
 PrefabInstance:
   m_ObjectHideFlags: 0

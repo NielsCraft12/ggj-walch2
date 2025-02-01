@@ -850,14 +850,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MowhawkScientist
       objectReference: {fileID: 0}
-    - target: {fileID: 6325928161373784442, guid: 0a8296825c6616d41be478d7ce5d40bc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134849086975540298, guid: 0a8296825c6616d41be478d7ce5d40bc, type: 3}
-      propertyPath: m_drop
-      value: 
-      objectReference: {fileID: 6625387700250456209, guid: b7fd3d103e4fcb144b5e32aa5bea5596, type: 3}
     - target: {fileID: 8134849086975540298, guid: 0a8296825c6616d41be478d7ce5d40bc, type: 3}
       propertyPath: m_messOmeterText
       value: 
@@ -976,14 +968,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WomenScientist
       objectReference: {fileID: 0}
-    - target: {fileID: 6325928161373784442, guid: 164f704b508d7f341a8a57a7ad6bc96d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134849086975540298, guid: 164f704b508d7f341a8a57a7ad6bc96d, type: 3}
-      propertyPath: m_drop
-      value: 
-      objectReference: {fileID: 6625387700250456209, guid: b7fd3d103e4fcb144b5e32aa5bea5596, type: 3}
     - target: {fileID: 8134849086975540298, guid: 164f704b508d7f341a8a57a7ad6bc96d, type: 3}
       propertyPath: m_messOmeterText
       value: 
@@ -1245,14 +1229,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AfroScientist
       objectReference: {fileID: 0}
-    - target: {fileID: 6325928161373784442, guid: b3c5e269eee29924a8f933d14affeeef, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134849086975540298, guid: b3c5e269eee29924a8f933d14affeeef, type: 3}
-      propertyPath: m_drop
-      value: 
-      objectReference: {fileID: 6625387700250456209, guid: b7fd3d103e4fcb144b5e32aa5bea5596, type: 3}
     - target: {fileID: 8134849086975540298, guid: b3c5e269eee29924a8f933d14affeeef, type: 3}
       propertyPath: m_messOmeterText
       value: 
@@ -1572,14 +1548,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManScientist
       objectReference: {fileID: 0}
-    - target: {fileID: 6325928161373784442, guid: 54a1f1a90d822654cb613bb05d6020f8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8134849086975540298, guid: 54a1f1a90d822654cb613bb05d6020f8, type: 3}
-      propertyPath: m_drop
-      value: 
-      objectReference: {fileID: 6625387700250456209, guid: b7fd3d103e4fcb144b5e32aa5bea5596, type: 3}
     - target: {fileID: 8134849086975540298, guid: 54a1f1a90d822654cb613bb05d6020f8, type: 3}
       propertyPath: m_messOmeterText
       value: 
@@ -1924,10 +1892,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaldScientist
       objectReference: {fileID: 0}
-    - target: {fileID: 6325928161373784442, guid: 13a488f1ad26c1847a7b8c51f5c17661, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8134849086975540298, guid: 13a488f1ad26c1847a7b8c51f5c17661, type: 3}
       propertyPath: m_messOmeterText
       value: 
@@ -2212,7 +2176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_uiManager: {fileID: 166381661}
   m_rat: {fileID: 4725160207538297325, guid: b4a607d35afef234080a8ae78ea72327, type: 3}
-  m_ratSpawn: {fileID: 1945909611}
+  m_ratSpawns: []
   m_CleanedCount: 0
 --- !u!1 &1432725484
 GameObject:

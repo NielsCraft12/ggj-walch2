@@ -12,6 +12,7 @@ public class Scientists : MonoBehaviour
     [Range(2, 10)] [SerializeField] int m_dropRate;
     [SerializeField] Animator m_messOmeterText;
     [SerializeField] GameObject m_drop;
+    Animator m_animator;
 
     int m_randomDrop;
     Vector3 m_startPos;
@@ -22,6 +23,7 @@ public class Scientists : MonoBehaviour
     private void Start()
     {
         m_startPos = transform.position;
+        m_animator = GetComponentInChildren<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
         m_agent.speed = m_speed;
     }
@@ -47,7 +49,9 @@ public class Scientists : MonoBehaviour
         if (m_agent.velocity.magnitude < 0.1f)
         {
             AudioManager.m_Instance.Play("FootSteps");
-        }
+            m_animator.SetBool("Walking", false);
+        }else
+            m_animator.SetBool("Walking", true);
     }
 
     private IEnumerator SetNewTarget()
