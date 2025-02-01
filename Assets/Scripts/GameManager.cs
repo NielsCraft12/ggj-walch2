@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,12 +9,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform m_ratSpawn;
     List<GameObject> m_rats = new List<GameObject>();
     public int m_CleanedCount;
-    private const float m_gradeScaling = 1500f;
+
+    private int m_LastTrashCount = 0;
 
     private void Start()
     {
         m_CleanedCount = 0;
         SettingsSingleton.Instance.settings.m_IsPaused = false;
+        m_LastTrashCount = 0;
     }
 
     private void Update()
@@ -36,11 +38,34 @@ public class GameManager : MonoBehaviour
             AudioManager.m_Instance.Play("LevelEnd");
         }
 
-        if (m_uiManager.m_allTrash.Count >= 5 && m_rats.Count < m_uiManager.m_allTrash.Count / 5)
+        HandleRatSpawning();
+    }
+
+    private void HandleRatSpawning()
+    {
+        int currentTrashCount = m_uiManager.m_allTrash.Count;
+
+        if (currentTrashCount >= 5)
         {
-            GameObject _newRat = Instantiate(m_rat, m_ratSpawn.position, Quaternion.identity);
-            m_rats.Add(_newRat);
+            int expectedRatCount = currentTrashCount / 5;
+
+            while (m_rats.Count < expectedRatCount)
+            {
+                GameObject _newRat = Instantiate(m_rat, m_ratSpawn.position, Quaternion.identity);
+                m_rats.Add(_newRat);
+            }
         }
+
+        if (currentTrashCount < 5)
+        {
+            foreach (GameObject rat in m_rats)
+            {
+                Destroy(rat);
+            }
+            m_rats.Clear();
+        }
+
+        m_LastTrashCount = currentTrashCount;
     }
 
     private string CalculateGrade()
@@ -48,25 +73,20 @@ public class GameManager : MonoBehaviour
         int _totalTrash = m_uiManager.m_allTrash.Count + m_CleanedCount;
         int _cleanedTrash = m_CleanedCount;
 
-        Debug.Log(_totalTrash);
-        Debug.Log(_cleanedTrash);
-
         if (_totalTrash == 0) return "F";
 
         float _score = (_cleanedTrash / (float)_totalTrash) * 100;
-        float _adjustmentFactor = 1 - Mathf.Exp(-_totalTrash / m_gradeScaling);
-        float _finalScore = _score * _adjustmentFactor;
 
-        if (_finalScore >= 90) return "A+";
-        if (_finalScore >= 85) return "A";
-        if (_finalScore >= 80) return "A-";
-        if (_finalScore >= 75) return "B+";
-        if (_finalScore >= 70) return "B";
-        if (_finalScore >= 65) return "B-";
-        if (_finalScore >= 60) return "C+";
-        if (_finalScore >= 55) return "C";
-        if (_finalScore >= 50) return "C-";
-        if (_finalScore >= 40) return "D";
+        if (_score >= 90) return "A+";
+        if (_score >= 85) return "A";
+        if (_score >= 80) return "A-";
+        if (_score >= 75) return "B+";
+        if (_score >= 70) return "B";
+        if (_score >= 65) return "B-";
+        if (_score >= 60) return "C+";
+        if (_score >= 55) return "C";
+        if (_score >= 50) return "C-";
+        if (_score >= 40) return "D";
         return "F";
     }
 }
