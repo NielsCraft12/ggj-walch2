@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_trash: {fileID: 6625387700250456209, guid: b7fd3d103e4fcb144b5e32aa5bea5596, type: 3}
-  m_dropRate: 3
+  m_dropRate: 4
 --- !u!54 &2121573365410511769
 Rigidbody:
   m_ObjectHideFlags: 0

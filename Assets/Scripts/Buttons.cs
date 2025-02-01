@@ -17,6 +17,7 @@ public class Buttons : MonoBehaviour
     public void StartGame()
     {
         AudioManager.m_Instance.Play("ButtonClick");
+        AudioManager.m_Instance.Play("Music");
         SceneManager.LoadScene("GameView");
     }
 
