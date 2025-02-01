@@ -6,7 +6,7 @@ public class Rattrap : MonoBehaviour
     public float speed = 15.0f; // Increased default speed for arrow-like behavior
 
     [SerializeField]
-    GameObject rat;
+    GameObject ratTraped;
 
     void Start()
     {
@@ -37,6 +37,7 @@ public class Rattrap : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Rat"))
         {
+            Instantiate(ratTraped, other.transform.position, other.transform.rotation);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

@@ -4951,7 +4951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  rat: {fileID: 0}
+  ratTraped: {fileID: 4725160207538297325, guid: c643bc1f0d988d64fa7dd6c236a580b8, type: 3}
 --- !u!54 &-2306387870738937675
 Rigidbody:
   m_ObjectHideFlags: 0
