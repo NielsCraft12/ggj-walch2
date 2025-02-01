@@ -3,29 +3,46 @@ using UnityEngine;
 public class Rattrap : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed = 1.0f;
+    public float speed = 15.0f; // Increased default speed for arrow-like behavior
 
     [SerializeField]
     GameObject rat;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rat.SetActive(false);
         rb = GetComponent<Rigidbody>();
         rb.linearVelocity = transform.forward * speed;
         Destroy(gameObject, 5);
     }
 
-    // Update is called once per frame
-    void Update() { }
+    void Update()
+    {
+        // Make the arrow rotate to match its velocity direction
+        if (rb.linearVelocity != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(rb.linearVelocity);
+        }
+    }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Rat")
+        if (other.gameObject.CompareTag("Rat"))
         {
-            rat.SetActive(true);
             Destroy(other.gameObject);
+        }
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Rat"))
+        {
+            Destroy(other.gameObject);
+        }
+
+        if (!other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
         }
     }
 }
