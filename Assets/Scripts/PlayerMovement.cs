@@ -51,7 +51,6 @@ public class playerMovement : MonoBehaviour
     [SerializeField]
     float trapcooldown = 1f; // Time between trap placements
 
-    [SerializeField]
     float trapcooldownTimer = 0f; // Current cooldown timer
 
     GameManager manager;
@@ -149,7 +148,7 @@ public class playerMovement : MonoBehaviour
         if (_context.phase == InputActionPhase.Performed)
         {
             AudioManager.m_Instance.Play("Bubble");
-            cleaningTimer = 2f;
+            cleaningTimer = cleaningTime;
             isCleaning = true;
         }
         else if (_context.phase == InputActionPhase.Canceled)
