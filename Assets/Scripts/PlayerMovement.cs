@@ -203,7 +203,6 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    // Check for and clean objects within radius
     private void CheckCleaningArea()
     {
         Collider[] hitColliders = Physics.OverlapSphere(
